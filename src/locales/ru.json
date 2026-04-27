@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "passenger": "Пассажир",
+    "staff": "Сотрудник",
+    "dispatcher": "Диспетчер",
+    "admin": "Админ",
+    "profile": "Профиль",
+    "notifications": "Уведомления",
+    "settings": "Настройки аккаунта",
+    "support": "Помощь и поддержка",
+    "logout": "Выйти"
+  },
+  "roles": {
+    "passenger": "Пассажир",
+    "staff": "Сотрудник",
+    "dispatcher": "Диспетчер",
+    "admin": "Администратор",
+    "passengerDesc": "Интерфейс доступности для маломобильных пассажиров",
+    "staffDesc": "Консоль оператора: задачи и база знаний",
+    "dispatcherDesc": "Живая карта, управление запросами и персоналом",
+    "adminDesc": "Аналитика, отзывы и настройки системы"
+  },
+  "home": {
+    "subtitle": "Система автоматизации поддержки людей с ОВЗ в аэропорту",
+    "instruction": "Выберите роль для доступа к соответствующему интерфейсу",
+    "featWcagTitle": "WCAG 2.1 AA",
+    "featWcagDesc": "Высокий контраст, крупный шрифт, фокус-индикаторы",
+    "featRealtimeTitle": "Реальное время",
+    "featRealtimeDesc": "Мгновенная синхронизация между всеми ролями",
+    "featServiceTitle": "Полный сервис",
+    "featServiceDesc": "Коляски, сопровождение, заказ питания, SOS"
+  },
+  "a11y": {
+    "widgetTitle": "Меню доступности",
+    "presets": "Пресеты настроек",
+    "presetVisual": "Помощь зрению",
+    "presetMotor": "Моторная помощь",
+    "presetCognitive": "Когнитивная помощь",
+    "display": "Отображение",
+    "textSize": "Размер текста",
+    "normal": "Обычный",
+    "large": "Крупный",
+    "contrast": "Контрастность",
+    "highContrast": "Высокий контраст",
+    "darkTheme": "Тёмная тема",
+    "dyslexia": "Шрифт для дислексии",
+    "navigation": "Навигация и чтение",
+    "highlightLinks": "Выделение ссылок",
+    "largeCursor": "Крупный курсор",
+    "tts": "Озвучивать при наведении",
+    "animations": "Анимации",
+    "stopAnimations": "Остановить анимации",
+    "reset": "Сбросить все настройки",
+    "resetting": "Сбрасываем..."
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "empty": "Нет новых уведомлений",
+    "markAllRead": "Прочитать все",
+    "flightStatusChange": "Рейс {{flight}} изменил статус на '{{status}}'"
+  },
+  "passenger": {
+    "greeting": "Добро пожаловать! Чем мы можем помочь?",
+    "clickHelp": "Нажмите для помощи",
+    "mapTitle": "Карта терминала и навигация",
+    "flightBoardTitle": "Табло рейсов",
+    "board": {
+      "departures": "Вылеты",
+      "arrivals": "Прилёты",
+      "searchPlaceholder": "Поиск по рейсу или городу...",
+      "colFlight": "Рейс",
+      "colDirection": "Направление",
+      "colTime": "Время",
+      "colGate": "Гейт",
+      "colStatus": "Статус",
+      "colPRM": "ОВЗ Запросы",
+      "status_on_time": "По расписанию",
+      "status_delayed": "Задерживается",
+      "status_boarding": "Посадка",
+      "status_arrived": "Прибыл",
+      "status_check_in": "Регистрация"
+    },
+    "flight": "Рейс: SU-2012 (Гейт A12)",
+    "boardInfo": "Посадка через 45 мин. Помощь скоро прибудет.",
+    "activeRequest": "Активный запрос",
+    "status": "В работе",
+    "viewDetails": "Показать детали",
+    "requestHelp": "Запросить помощь",
+    "wheelchair": "Кресло-коляска",
+    "accompaniment": "Сопровождение",
+    "sos": "Кнопка SOS",
+    "medicalHelp": "Срочная медицинская помощь",
+    "food": "Доставка питания",
+    "foodDesc": "К гейту A12",
+    "zones": {
+      "registration": "РЕГИСТРАЦИЯ",
+      "registrationDesc": "Помощь при регистрации на рейс",
+      "security": "БЕЗОПАСНОСТЬ",
+      "securityDesc": "Сопровождение через зону контроля",
+      "gates": "ВЫХОД",
+      "gatesDesc": "Помощь по пути к выходу на посадку",
+      "wc": "ТУАЛЕТЫ",
+      "wcDesc": "Помощь в поиске доступных туалетов"
+    },
+    "nav": {
+      "dashboard": "Главная",
+      "map": "Карта терминала",
+      "services": "Сервисы",
+      "chats": "Чат и поддержка"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "passenger": "乘客",
+    "staff": "员工",
+    "dispatcher": "调度员",
+    "admin": "管理员",
+    "profile": "个人资料",
+    "notifications": "通知",
+    "settings": "账户设置",
+    "support": "帮助与支持",
+    "logout": "注销"
+  },
+  "roles": {
+    "passenger": "乘客",
+    "staff": "员工",
+    "dispatcher": "调度",
+    "admin": "管理员",
+    "passengerDesc": "行动不便乘客的无障碍界面",
+    "staffDesc": "操作员控制台：任务和知识库",
+    "dispatcherDesc": "实时地图、请求和人员管理",
+    "adminDesc": "分析、反馈和系统设置"
+  },
+  "home": {
+    "subtitle": "机场残障人士无障碍支持自动化系统",
+    "instruction": "选择一个角色以访问相应的界面",
+    "featWcagTitle": "WCAG 2.1 AA",
+    "featWcagDesc": "高对比度，大字体，焦点指示器",
+    "featRealtimeTitle": "实时同步",
+    "featRealtimeDesc": "所有角色之间的即时数据同步",
+    "featServiceTitle": "全面服务",
+    "featServiceDesc": "轮椅，护送，送餐，SOS"
+  },
+  "a11y": {
+    "widgetTitle": "无障碍菜单",
+    "presets": "预设配置",
+    "presetVisual": "视觉辅助",
+    "presetMotor": "运动辅助",
+    "presetCognitive": "认知辅助",
+    "display": "显示设置",
+    "textSize": "文字大小",
+    "normal": "正常",
+    "large": "大",
+    "contrast": "对比度",
+    "highContrast": "高对比度",
+    "darkTheme": "深色模式",
+    "dyslexia": "阅读障碍字体",
+    "navigation": "导航与阅读",
+    "highlightLinks": "突出显示链接",
+    "largeCursor": "大光标",
+    "tts": "悬停时朗读文本",
+    "animations": "动画效果",
+    "stopAnimations": "停止动画",
+    "reset": "重置所有设置",
+    "resetting": "重置中..."
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "没有新通知",
+    "markAllRead": "全部标为已读",
+    "flightStatusChange": "航班 {{flight}} 状态已更改为 '{{status}}'"
+  },
+  "passenger": {
+    "greeting": "欢迎！我们能为您做些什么？",
+    "clickHelp": "点击寻求帮助",
+    "mapTitle": "航站楼地图与导航",
+    "flightBoardTitle": "航班时刻表",
+    "board": {
+      "departures": "出发",
+      "arrivals": "到达",
+      "searchPlaceholder": "搜索航班或城市...",
+      "colFlight": "航班",
+      "colDirection": "方向",
+      "colTime": "时间",
+      "colGate": "登机口",
+      "colStatus": "状态",
+      "colPRM": "特殊协助请求",
+      "status_on_time": "准点",
+      "status_delayed": "延误",
+      "status_boarding": "登机中",
+      "status_arrived": "已到达",
+      "status_check_in": "值机"
+    },
+    "flight": "航班: SU-2012 (登机口 A12)",
+    "boardInfo": "45分钟后登机。协助人员即将到达。",
+    "activeRequest": "当前请求",
+    "status": "处理中",
+    "viewDetails": "查看详情",
+    "requestHelp": "请求协助",
+    "wheelchair": "轮椅服务",
+    "accompaniment": "陪同服务",
+    "sos": "SOS紧急呼叫",
+    "medicalHelp": "紧急医疗救援",
+    "food": "送餐服务",
+    "foodDesc": "送至 A12 登机口",
+    "zones": {
+      "registration": "值机",
+      "registrationDesc": "协助办理登机手续",
+      "security": "安检",
+      "securityDesc": "护送通过安检区",
+      "gates": "登机口",
+      "gatesDesc": "协助前往登机口",
+      "wc": "洗手间",
+      "wcDesc": "协助寻找无障碍洗手间"
+    },
+    "nav": {
+      "dashboard": "主页",
+      "map": "航站楼地图",
+      "services": "机场服务",
+      "chats": "聊天与支持"
+    }
+  }
+}

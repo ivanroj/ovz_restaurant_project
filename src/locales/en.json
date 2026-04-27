@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "passenger": "Passenger",
+    "staff": "Staff",
+    "dispatcher": "Dispatcher",
+    "admin": "Admin",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "settings": "Account Settings",
+    "support": "Help & Support",
+    "logout": "Log out"
+  },
+  "roles": {
+    "passenger": "Passenger",
+    "staff": "Staff",
+    "dispatcher": "Dispatcher",
+    "admin": "Administrator",
+    "passengerDesc": "Accessibility interface for PRM passengers",
+    "staffDesc": "Operator console: tasks and knowledge base",
+    "dispatcherDesc": "Live map, request and staff management",
+    "adminDesc": "Analytics, feedback and system settings"
+  },
+  "home": {
+    "subtitle": "Airport Accessibility Support Automation System",
+    "instruction": "Select a role to access the corresponding interface",
+    "featWcagTitle": "WCAG 2.1 AA",
+    "featWcagDesc": "High contrast, large fonts, focus indicators",
+    "featRealtimeTitle": "Real-time",
+    "featRealtimeDesc": "Instant synchronization across all roles",
+    "featServiceTitle": "Full service",
+    "featServiceDesc": "Wheelchairs, escorts, food orders, SOS"
+  },
+  "a11y": {
+    "widgetTitle": "Accessibility Menu",
+    "presets": "Presets",
+    "presetVisual": "Visual Assistance",
+    "presetMotor": "Motor Assistance",
+    "presetCognitive": "Cognitive Assistance",
+    "display": "Display Settings",
+    "textSize": "Text Size",
+    "normal": "Normal",
+    "large": "Large",
+    "contrast": "Contrast",
+    "highContrast": "High Contrast",
+    "darkTheme": "Dark Mode",
+    "dyslexia": "Dyslexic font",
+    "navigation": "Navigation & Reading",
+    "highlightLinks": "Highlight links",
+    "largeCursor": "Large cursor",
+    "tts": "Text to speech on hover",
+    "animations": "Animations",
+    "stopAnimations": "Stop animations",
+    "reset": "Reset all settings",
+    "resetting": "Resetting..."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No new notifications",
+    "markAllRead": "Mark all as read",
+    "flightStatusChange": "Flight {{flight}} status changed to '{{status}}'"
+  },
+  "passenger": {
+    "greeting": "Welcome! How can we help you?",
+    "clickHelp": "Click for help",
+    "mapTitle": "Terminal Map & Navigation",
+    "flightBoardTitle": "Flight Board",
+    "board": {
+      "departures": "Departures",
+      "arrivals": "Arrivals",
+      "searchPlaceholder": "Search flight or city...",
+      "colFlight": "Flight",
+      "colDirection": "Direction",
+      "colTime": "Time",
+      "colGate": "Gate",
+      "colStatus": "Status",
+      "colPRM": "PRM Requests",
+      "status_on_time": "On Time",
+      "status_delayed": "Delayed",
+      "status_boarding": "Boarding",
+      "status_arrived": "Arrived",
+      "status_check_in": "Check-in"
+    },
+    "flight": "Flight: SU-2012 (Gate A12)",
+    "boardInfo": "Boarding in 45m. Assistance is ready.",
+    "activeRequest": "Active request",
+    "status": "In progress",
+    "viewDetails": "View details",
+    "requestHelp": "Request Help",
+    "wheelchair": "Wheelchair",
+    "accompaniment": "Accompaniment",
+    "sos": "SOS Emergency",
+    "medicalHelp": "Medical help for passenger",
+    "food": "Food delivery",
+    "foodDesc": "To gate A12",
+    "zones": {
+      "registration": "CHECK-IN",
+      "registrationDesc": "Help with flight check-in",
+      "security": "SECURITY",
+      "securityDesc": "Escort through security zone",
+      "gates": "GATES",
+      "gatesDesc": "Help navigating to departure gates",
+      "wc": "RESTROOMS",
+      "wcDesc": "Help finding accessible restrooms"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "map": "Terminal Map",
+      "services": "Airport Services",
+      "chats": "Chats & Support"
+    }
+  }
+}
