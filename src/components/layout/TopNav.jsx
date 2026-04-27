@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useStore from '../../store/useStore';
+import AccountSettingsModal from '../ui/AccountSettingsModal';
 
 export default function TopNav() {
   const location = useLocation();
   const path = location.pathname;
-  const staff = useStore((state) => state.staff);
-  const currentStaff = staff[0];
+  const currentUser = useStore((state) => state.currentUser);
   const notifications = useStore((state) => state.notifications);
   const markAllNotificationsRead = useStore((state) => state.markAllNotificationsRead);
 
@@ -23,6 +23,9 @@ export default function TopNav() {
   // Notifications State
   const [notifOpen, setNotifOpen] = useState(false);
   const notifRef = useRef(null);
+
+  // Settings Modal State
+  const [settingsOpen, setSettingsOpen] = useState(false);
   
   const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -52,7 +55,7 @@ export default function TopNav() {
     if (path.includes('passenger')) return 'Пассажир';
     if (path.includes('dispatcher')) return 'Старший диспетчер';
     if (path.includes('admin')) return 'Системный администратор';
-    return currentStaff.name;
+    return currentUser.full_name;
   };
 
   const navLinks = [
@@ -63,8 +66,9 @@ export default function TopNav() {
   ];
 
   return (
-    <header className="bg-primary fixed top-0 w-full z-50 shadow-ambient">
-      <div className="flex justify-between items-center px-6 h-20 w-full">
+    <>
+      <header className="bg-primary fixed top-0 w-full z-50 shadow-ambient">
+        <div className="flex justify-between items-center px-6 h-20 w-full">
         <div className="flex items-center gap-8">
           <Link to="/" className="text-2xl font-black text-white tracking-tight hover:opacity-90 transition-opacity">
             AeroAssist Pro
@@ -184,14 +188,17 @@ export default function TopNav() {
             {profileOpen && (
               <div className="absolute right-0 top-12 w-64 bg-surface-container-lowest rounded-xl shadow-ambient-lg border border-outline-variant/30 overflow-hidden text-on-surface z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="p-4 bg-surface-container-low border-b border-surface-container-high flex gap-3 items-center">
-                  <img src={currentStaff.avatar} alt="Аватар" className="w-10 h-10 rounded-full object-cover bg-primary-fixed" />
+                  <img src={currentUser.avatar} alt="Аватар" className="w-10 h-10 rounded-full object-cover bg-primary-fixed" />
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-sm truncate">{getRoleName()}</p>
-                    <p className="text-xs text-on-surface-variant truncate">ID: {currentStaff.id}</p>
+                    <p className="text-xs text-on-surface-variant truncate">ID: {currentUser.user_id.split('-')[0]}</p>
                   </div>
                 </div>
                 <div className="p-2 space-y-1">
-                  <button className="w-full text-left px-4 py-2 text-sm font-medium hover:bg-surface-container rounded-lg transition-colors flex items-center gap-3">
+                  <button 
+                    onClick={() => { setSettingsOpen(true); setProfileOpen(false); }} 
+                    className="w-full text-left px-4 py-2 text-sm font-medium hover:bg-surface-container rounded-lg transition-colors flex items-center gap-3"
+                  >
                     <span className="material-symbols-outlined text-outline text-lg">settings</span>
                     Настройки аккаунта
                   </button>
@@ -235,5 +242,12 @@ export default function TopNav() {
         ))}
       </nav>
     </header>
+
+      {/* Account Settings Modal */}
+      <AccountSettingsModal 
+        isOpen={settingsOpen} 
+        onClose={() => setSettingsOpen(false)} 
+      />
+    </>
   );
 }

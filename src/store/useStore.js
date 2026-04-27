@@ -12,6 +12,19 @@ const useStore = create((set, get) => ({
   sosAlerts: [],
   notifications: [],
 
+  // ─── Current User (DB Binding) ───
+  currentUser: {
+    user_id: '11111111-1111-1111-1111-111111111111',
+    role: 'admin',
+    full_name: 'Системный администратор',
+    phone: '+7 (999) 123-45-67',
+    email: 'admin@aeroassist.ru',
+    avatar: 'https://ui-avatars.com/api/?name=Системный+администратор&background=1d3a8a&color=fff&size=128',
+  },
+  updateCurrentUser: (updates) => set((state) => ({
+    currentUser: { ...state.currentUser, ...updates }
+  })),
+
   // ─── Flight Simulation ───
   simulateFlightUpdates: () => set((state) => {
     let newNotification = null;
