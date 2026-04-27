@@ -2,65 +2,59 @@ import { useState, useEffect, useRef } from 'react';
 
 // ─── Terminal Layout: Zones with coordinates ───
 const terminalZones = [
-  // Main entrance
-  { id: 'entrance', label: 'Главный вход', icon: 'door_front', x: 500, y: 580, w: 120, h: 40, type: 'entrance', color: '#0f3a9f' },
+  // Entrance & Parking
+  { id: 'parking', label: 'Парковка', icon: 'local_parking', x: 450, y: 680, w: 120, h: 40, type: 'parking', color: '#434654' },
+  { id: 'entrance', label: 'Главный вход', icon: 'door_front', x: 450, y: 620, w: 120, h: 40, type: 'entrance', color: '#0f3a9f' },
   
+  // Baggage & Info
+  { id: 'baggage-1', label: 'Выдача багажа 1-4', icon: 'luggage', x: 150, y: 560, w: 160, h: 40, type: 'baggage', color: '#434654' },
+  { id: 'info', label: 'Справка', icon: 'info', x: 460, y: 560, w: 100, h: 40, type: 'service', color: '#0f3a9f' },
+  { id: 'baggage-2', label: 'Выдача багажа 5-8', icon: 'luggage', x: 710, y: 560, w: 160, h: 40, type: 'baggage', color: '#434654' },
+
   // Registration
-  { id: 'reg-a', label: 'Регистрация A (1–10)', icon: 'how_to_reg', x: 180, y: 460, w: 140, h: 50, type: 'registration', color: '#3154b8' },
-  { id: 'reg-b', label: 'Регистрация B (11–20)', icon: 'how_to_reg', x: 400, y: 460, w: 140, h: 50, type: 'registration', color: '#3154b8' },
-  { id: 'reg-c', label: 'Регистрация C (21–30)', icon: 'how_to_reg', x: 620, y: 460, w: 140, h: 50, type: 'registration', color: '#3154b8' },
-  { id: 'self-reg', label: 'Самостоятельная регистрация', icon: 'self_improvement', x: 830, y: 460, w: 130, h: 50, type: 'registration', color: '#3154b8' },
+  { id: 'reg-a', label: 'Регистрация A', icon: 'how_to_reg', x: 80, y: 490, w: 140, h: 50, type: 'registration', color: '#3154b8' },
+  { id: 'reg-b', label: 'Регистрация B', icon: 'how_to_reg', x: 330, y: 490, w: 140, h: 50, type: 'registration', color: '#3154b8' },
+  { id: 'reg-c', label: 'Регистрация C', icon: 'how_to_reg', x: 550, y: 490, w: 140, h: 50, type: 'registration', color: '#3154b8' },
+  { id: 'self-reg', label: 'Саморегистрация', icon: 'self_improvement', x: 770, y: 490, w: 140, h: 50, type: 'registration', color: '#3154b8' },
 
-  // Security
-  { id: 'security-a', label: 'Безопасность — Терминал A', icon: 'security', x: 200, y: 360, w: 160, h: 40, type: 'security', color: '#693600' },
-  { id: 'security-b', label: 'Безопасность — Терминал B', icon: 'security', x: 520, y: 360, w: 160, h: 40, type: 'security', color: '#693600' },
-  { id: 'passport', label: 'Паспортный контроль', icon: 'badge', x: 780, y: 360, w: 140, h: 40, type: 'security', color: '#693600' },
+  // Security & Passport
+  { id: 'security-a', label: 'Досмотр A', icon: 'security', x: 150, y: 400, w: 140, h: 40, type: 'security', color: '#693600' },
+  { id: 'security-b', label: 'Досмотр B', icon: 'security', x: 440, y: 400, w: 140, h: 40, type: 'security', color: '#693600' },
+  { id: 'passport', label: 'Паспортный контроль', icon: 'badge', x: 730, y: 400, w: 160, h: 40, type: 'security', color: '#693600' },
 
-  // Terminal A gates (left wing)
-  { id: 'gate-a1', label: 'Гейт A1', icon: 'flight_takeoff', x: 60, y: 120, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
-  { id: 'gate-a5', label: 'Гейт A5', icon: 'flight_takeoff', x: 60, y: 190, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
-  { id: 'gate-a9', label: 'Гейт A9', icon: 'flight_takeoff', x: 60, y: 260, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
-  { id: 'gate-a12', label: 'Гейт A12', icon: 'flight_takeoff', x: 160, y: 120, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
+  // Facilities & Restaurants (Corridor level)
+  { id: 'wc-1', label: 'WC (A)', icon: 'wc', x: 60, y: 340, w: 80, h: 40, type: 'facility', color: '#434654' },
+  { id: 'rest-skyline', label: 'SkyLine', icon: 'restaurant', x: 160, y: 340, w: 100, h: 40, type: 'restaurant', color: '#693600' },
+  { id: 'wc-2', label: 'WC (B)', icon: 'wc', x: 280, y: 340, w: 80, h: 40, type: 'facility', color: '#434654' },
+  { id: 'rest-bistro', label: 'Bistro Jet', icon: 'restaurant', x: 380, y: 340, w: 100, h: 40, type: 'restaurant', color: '#693600' },
+  { id: 'wc-b', label: 'WC (C)', icon: 'wc', x: 500, y: 340, w: 80, h: 40, type: 'facility', color: '#434654' },
+  { id: 'rest-terminal', label: 'Term. Bites', icon: 'restaurant', x: 600, y: 340, w: 100, h: 40, type: 'restaurant', color: '#693600' },
+  { id: 'wc-acc', label: 'WC Инв.', icon: 'accessible', x: 720, y: 340, w: 80, h: 40, type: 'facility', color: '#434654' },
+  { id: 'medical', label: 'Медпункт', icon: 'local_hospital', x: 820, y: 340, w: 100, h: 40, type: 'service', color: '#ba1a1a' },
 
-  // Terminal B gates (center-left)
-  { id: 'gate-b4', label: 'Гейт B4', icon: 'flight_takeoff', x: 300, y: 120, w: 70, h: 50, type: 'gate', color: '#0453cd' },
-  { id: 'gate-b8', label: 'Гейт B8', icon: 'flight_takeoff', x: 300, y: 190, w: 70, h: 50, type: 'gate', color: '#0453cd' },
-  { id: 'gate-b12', label: 'Гейт B12', icon: 'flight_takeoff', x: 400, y: 120, w: 70, h: 50, type: 'gate', color: '#0453cd' },
+  // Lounges & Mother-child
+  { id: 'lounge-a', label: 'VIP Lounge A', icon: 'airline_seat_flat', x: 110, y: 220, w: 120, h: 40, type: 'lounge', color: '#0f3a9f' },
+  { id: 'lounge-b', label: 'VIP Lounge B', icon: 'airline_seat_recline_normal', x: 350, y: 220, w: 120, h: 40, type: 'lounge', color: '#0453cd' },
+  { id: 'mother-child', label: 'Комната матери', icon: 'child_care', x: 800, y: 220, w: 120, h: 40, type: 'service', color: '#8b4a00' },
 
-  // Terminal C gates (center-right)
-  { id: 'gate-c3', label: 'Гейт C3', icon: 'flight_takeoff', x: 540, y: 120, w: 70, h: 50, type: 'gate', color: '#356ee7' },
-  { id: 'gate-c8', label: 'Гейт C8', icon: 'flight_takeoff', x: 540, y: 190, w: 70, h: 50, type: 'gate', color: '#356ee7' },
+  // Gates - Terminal A
+  { id: 'gate-a1', label: 'Гейт A1', icon: 'flight_takeoff', x: 60, y: 70, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
+  { id: 'gate-a9', label: 'Гейт A9', icon: 'flight_takeoff', x: 150, y: 70, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
+  { id: 'gate-a5', label: 'Гейт A5', icon: 'flight_takeoff', x: 60, y: 140, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
+  { id: 'gate-a12', label: 'Гейт A12', icon: 'flight_takeoff', x: 150, y: 140, w: 70, h: 50, type: 'gate', color: '#0f3a9f' },
 
-  // Terminal D gates (right wing)
-  { id: 'gate-d2', label: 'Гейт D2', icon: 'flight_takeoff', x: 740, y: 120, w: 70, h: 50, type: 'gate', color: '#153ea3' },
-  { id: 'gate-d6', label: 'Гейт D6', icon: 'flight_takeoff', x: 840, y: 120, w: 70, h: 50, type: 'gate', color: '#153ea3' },
+  // Gates - Terminal B
+  { id: 'gate-b4', label: 'Гейт B4', icon: 'flight_takeoff', x: 310, y: 70, w: 70, h: 50, type: 'gate', color: '#0453cd' },
+  { id: 'gate-b12', label: 'Гейт B12', icon: 'flight_takeoff', x: 400, y: 70, w: 70, h: 50, type: 'gate', color: '#0453cd' },
+  { id: 'gate-b8', label: 'Гейт B8', icon: 'flight_takeoff', x: 355, y: 140, w: 70, h: 50, type: 'gate', color: '#0453cd' },
 
-  // Facilities
-  { id: 'wc-1', label: 'Туалет 1 этаж (A)', icon: 'wc', x: 140, y: 300, w: 60, h: 40, type: 'facility', color: '#434654' },
-  { id: 'wc-2', label: 'Туалет 2 этаж (A)', icon: 'wc', x: 340, y: 260, w: 60, h: 40, type: 'facility', color: '#434654' },
-  { id: 'wc-b', label: 'Туалет Терминал B', icon: 'wc', x: 540, y: 260, w: 60, h: 40, type: 'facility', color: '#434654' },
-  { id: 'wc-acc', label: 'Туалет для маломобильных', icon: 'accessible', x: 740, y: 260, w: 80, h: 40, type: 'facility', color: '#434654' },
+  // Gates - Terminal C
+  { id: 'gate-c3', label: 'Гейт C3', icon: 'flight_takeoff', x: 580, y: 70, w: 70, h: 50, type: 'gate', color: '#356ee7' },
+  { id: 'gate-c8', label: 'Гейт C8', icon: 'flight_takeoff', x: 670, y: 70, w: 70, h: 50, type: 'gate', color: '#356ee7' },
 
-  // Services
-  { id: 'medical', label: 'Медицинский пункт', icon: 'local_hospital', x: 900, y: 300, w: 90, h: 40, type: 'service', color: '#ba1a1a' },
-  { id: 'info', label: 'Информационная стойка', icon: 'info', x: 500, y: 530, w: 100, h: 35, type: 'service', color: '#0f3a9f' },
-  { id: 'mother-child', label: 'Комната матери и ребёнка', icon: 'child_care', x: 900, y: 200, w: 90, h: 40, type: 'service', color: '#8b4a00' },
-
-  // Restaurants
-  { id: 'rest-skyline', label: 'SkyLine Deli', icon: 'restaurant', x: 260, y: 300, w: 70, h: 40, type: 'restaurant', color: '#693600' },
-  { id: 'rest-bistro', label: 'Bistro Jet', icon: 'restaurant', x: 460, y: 300, w: 70, h: 40, type: 'restaurant', color: '#693600' },
-  { id: 'rest-terminal', label: 'Terminal Bites', icon: 'restaurant', x: 660, y: 300, w: 80, h: 40, type: 'restaurant', color: '#693600' },
-
-  // Lounges
-  { id: 'lounge-a', label: 'Лаунж A (бизнес)', icon: 'airline_seat_flat', x: 160, y: 190, w: 80, h: 40, type: 'lounge', color: '#0f3a9f' },
-  { id: 'lounge-b', label: 'Лаунж B (общий)', icon: 'airline_seat_recline_normal', x: 400, y: 190, w: 80, h: 40, type: 'lounge', color: '#0453cd' },
-
-  // Baggage
-  { id: 'baggage-1', label: 'Выдача багажа (Ленты 1–4)', icon: 'luggage', x: 250, y: 530, w: 130, h: 40, type: 'baggage', color: '#434654' },
-  { id: 'baggage-2', label: 'Выдача багажа (Ленты 5–8)', icon: 'luggage', x: 700, y: 530, w: 130, h: 40, type: 'baggage', color: '#434654' },
-
-  // Parking
-  { id: 'parking', label: 'Парковка', icon: 'local_parking', x: 500, y: 630, w: 100, h: 35, type: 'parking', color: '#434654' },
+  // Gates - Terminal D
+  { id: 'gate-d2', label: 'Гейт D2', icon: 'flight_takeoff', x: 780, y: 70, w: 70, h: 50, type: 'gate', color: '#153ea3' },
+  { id: 'gate-d6', label: 'Гейт D6', icon: 'flight_takeoff', x: 870, y: 70, w: 70, h: 50, type: 'gate', color: '#153ea3' },
 ];
 
 // ─── Waypoint graph for pathfinding ───
@@ -449,43 +443,40 @@ export default function TerminalMap({ onSelectLocation, initialFrom, initialTo }
       <div className="bg-surface-container-lowest rounded-2xl shadow-ambient-lg overflow-hidden relative">
         <svg
           ref={svgRef}
-          viewBox="0 0 1020 680"
+          viewBox="0 0 1020 740"
           className="w-full h-auto"
           style={{ minHeight: '400px' }}
         >
           {/* Background */}
-          <rect x="0" y="0" width="1020" height="680" fill="#f3f3f6" />
+          <rect x="0" y="0" width="1020" height="740" fill="#f3f3f6" />
 
           {/* Terminal building outline */}
-          <rect x="40" y="90" width="940" height="440" rx="20" fill="#eeeef0" stroke="#c3c6d6" strokeWidth="2" />
+          <rect x="30" y="30" width="960" height="580" rx="20" fill="#eeeef0" stroke="#c3c6d6" strokeWidth="2" />
 
-          {/* Terminal wings */}
+          {/* Terminal zones background */}
           {/* Wing A */}
-          <rect x="40" y="90" width="220" height="250" rx="12" fill="#e8e8ea" />
-          <text x="150" y="112" textAnchor="middle" className="label-sm" fill="#737685" fontSize="10" fontWeight="800">ТЕРМИНАЛ A</text>
+          <rect x="40" y="50" width="240" height="230" rx="12" fill="#e8e8ea" />
+          <text x="160" y="270" textAnchor="middle" className="label-sm" fill="#737685" fontSize="12" fontWeight="800">ТЕРМИНАЛ A</text>
 
           {/* Wing B */}
-          <rect x="280" y="90" width="220" height="250" rx="12" fill="#e8e8ea" />
-          <text x="390" y="112" textAnchor="middle" className="label-sm" fill="#737685" fontSize="10" fontWeight="800">ТЕРМИНАЛ B</text>
+          <rect x="290" y="50" width="250" height="230" rx="12" fill="#e8e8ea" />
+          <text x="415" y="270" textAnchor="middle" className="label-sm" fill="#737685" fontSize="12" fontWeight="800">ТЕРМИНАЛ B</text>
 
           {/* Wing C */}
-          <rect x="520" y="90" width="170" height="200" rx="12" fill="#e8e8ea" />
-          <text x="605" y="112" textAnchor="middle" className="label-sm" fill="#737685" fontSize="10" fontWeight="800">ТЕРМИНАЛ C</text>
+          <rect x="560" y="50" width="190" height="230" rx="12" fill="#e8e8ea" />
+          <text x="655" y="270" textAnchor="middle" className="label-sm" fill="#737685" fontSize="12" fontWeight="800">ТЕРМИНАЛ C</text>
 
           {/* Wing D */}
-          <rect x="720" y="90" width="230" height="200" rx="12" fill="#e8e8ea" />
-          <text x="835" y="112" textAnchor="middle" className="label-sm" fill="#737685" fontSize="10" fontWeight="800">ТЕРМИНАЛ D</text>
+          <rect x="760" y="50" width="210" height="230" rx="12" fill="#e8e8ea" />
+          <text x="865" y="270" textAnchor="middle" className="label-sm" fill="#737685" fontSize="12" fontWeight="800">ТЕРМИНАЛ D</text>
 
-          {/* Corridor */}
-          <rect x="40" y="340" width="940" height="80" rx="8" fill="#dadadc" opacity="0.5" />
-          <text x="510" y="390" textAnchor="middle" fill="#737685" fontSize="9" fontWeight="700">═══════ ГЛАВНЫЙ КОРИДОР ═══════</text>
+          {/* Main Corridor */}
+          <rect x="40" y="320" width="940" height="140" rx="12" fill="#dadadc" opacity="0.5" />
+          <text x="510" y="380" textAnchor="middle" fill="#737685" fontSize="12" fontWeight="700">ГЛАВНЫЙ КОРИДОР</text>
 
-          {/* Registration area */}
-          <rect x="100" y="435" width="850" height="90" rx="12" fill="#dce1ff" opacity="0.3" />
-          <text x="510" y="500" textAnchor="middle" fill="#0f3a9f" fontSize="9" fontWeight="700" opacity="0.5">ЗОНА РЕГИСТРАЦИИ</text>
-
-          {/* Arrivals area */}
-          <rect x="100" y="515" width="850" height="70" rx="12" fill="#ffdcc3" opacity="0.2" />
+          {/* Registration & Baggage */}
+          <rect x="40" y="470" width="940" height="130" rx="12" fill="#dce1ff" opacity="0.3" />
+          <text x="510" y="540" textAnchor="middle" fill="#0f3a9f" fontSize="10" fontWeight="700" opacity="0.6">ЗОНА РЕГИСТРАЦИИ И ВЫДАЧИ БАГАЖА</text>
 
           {/* Route path (animated) */}
           {routePath && routePath.length > 1 && (
